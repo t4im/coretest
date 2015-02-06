@@ -8,12 +8,6 @@ minetest.register_node("api_test:undiggable", {
 	can_dig = function(pos, player) return false end
 })
 
-local function run_api_tests()
-	dofile(modpath .. "/data_handling.lua")
-	dofile(modpath .. "/item_handling.lua")
-	dofile(modpath .. "/environment.lua")
-end
-
-minetest.after(0, function ()
-	run_api_tests()
-end)
+dofile(modpath .. "/data_handling.lua")
+dofile(modpath .. "/item_handling.lua")
+dofile(modpath .. "/environment.lua")
