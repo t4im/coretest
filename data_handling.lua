@@ -59,3 +59,13 @@ describe("Settings:remove(key)", function()
 	end)
 end)
 
+describe("table.copy(table)", function()
+	it("doesn't crash when given false as value (minetest/minetest#2293)", function()
+		Given("a table with a false boolean value")
+		local test_table = { key = false }
+		When("copying the table")
+		local table_copy_func = function() table.copy(test_table) end
+		Then("don't crash")
+		assert.has_no.errors(table_copy_func)
+	end)
+end)
