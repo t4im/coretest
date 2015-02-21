@@ -1,11 +1,8 @@
-describe("minetest/minetest#2222", function()
-	local input
-
-	given("a recipe request of default:chest", function()
-		input = minetest.get_craft_recipe("default:chest")
-	end)
-
-	it("returns the correct recipe", function(assert)
+describe("minetest.get_craft_recipe() ", function()
+	it("will return only fully matching recipes (minetest/minetest#2222)", function(assert)
+		Given("a recipe request of default:chest")
+		local input = minetest.get_craft_recipe("default:chest")
+		Then("return the correct recipe")
 		assert.are.same({
 			"group:wood", "group:wood", "group:wood",
 			"group:wood", nil, "group:wood",
