@@ -1,5 +1,5 @@
 describe("minetest.serialize(table)", function()
-	it("serializes large numeric indexes correctly (minetest/minetest#2206)", function(assert)
+	it("serializes large numeric indexes correctly (minetest/minetest#2206)", function()
 		Given("a table with a large enough numeric index")
 		local test_table = { [100000000000000123] = "test" }
 		When("serializing the table")
@@ -7,7 +7,7 @@ describe("minetest.serialize(table)", function()
 		Then("deserialize back to the original version")
 		assert.are.same(test_table, minetest.deserialize(serialized_table))
 	end)
-	it("serializes nested tables correctly (minetest/minetest#2365)", function(assert)
+	it("serializes nested tables correctly (minetest/minetest#2365)", function()
 		Given("a table with a nested table")
 		local test_table = {
 			nested_table = {
@@ -23,7 +23,7 @@ end)
 
 local worldpath = minetest.get_worldpath()
 describe("Settings:remove(key)", function()
-	it("really persists written changes (minetest/minetest#2264)", function(assert)
+	it("really persists written changes (minetest/minetest#2264)", function()
 		Given("a settings file with an example entry")
 		local settings = Settings(worldpath .. "/test.conf")
 		settings:set("testkey", "testvalue")
@@ -51,7 +51,7 @@ describe("Settings:remove(key)", function()
 		assert.is.Nil(settings:get("testkey"))
 	end)
 
-	it("fails when trying to remove some key that doesn't exist", function(assert)
+	it("fails when trying to remove some key that doesn't exist", function()
 		Given("a settings file")
 		local settings = Settings(worldpath .. "/test.conf")
 		Then("fail when removing a key that doesn't exist")
