@@ -7,6 +7,18 @@ describe("minetest.serialize(table)", function()
 		Then("deserialize back to the original version")
 		assert.are.same(test_table, minetest.deserialize(serialized_table))
 	end)
+	it("serializes nested tables correctly (minetest/minetest#2365)", function(assert)
+		Given("a table with a nested table")
+		local test_table = {
+			nested_table = {
+				nested_value = 23
+			}
+		}
+		When("serializing the table")
+		local serialized_table = minetest.serialize(test_table)
+		Then("deserialize back to the original version")
+		assert.are.same(test_table, minetest.deserialize(serialized_table))
+	end)
 end)
 
 local worldpath = minetest.get_worldpath()
