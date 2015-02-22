@@ -24,7 +24,9 @@ describe("minetest.dig_node(pos) -- ", function()
 		assert.is.False(dig)
 	end)
 
-	-- revert to former state after run
-	minetest.is_protected = original_protection
+	after(function()
+		-- revert to former state after run
+		minetest.is_protected = original_protection
+	end)
 end)
 
