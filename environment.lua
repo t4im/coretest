@@ -1,9 +1,10 @@
 local test_position = {x=51,y=1,z=50}
 
-minetest.register_node("api_test:undiggable", {
+local node_name = minetest.get_current_modname() .. ":undiggable"
+minetest.register_node(node_name, {
 	description = "node that doesn't allow to be dug by players",
 	tiles = {"default_lava.png"},
-	groups = { dig_immediate=2 },
+	groups = { dig_immediate=2, not_in_creative_inventory=1 },
 	paramtype = "light",
 	can_dig = function(pos, player) return false end
 })
@@ -19,7 +20,7 @@ describe("minetest.dig_node(pos) -- ", function()
 	it("Returns false on failure (e.g. protected location) (minetest/minetest#2015)", function()
 		Given "an undiggable node"
 		minetest.is_protected = function(pos, name) return true end
-		minetest.set_node(test_position, {name="api_test:undiggable"})
+		minetest.set_node(test_position, {name = node_name })
 
 		When "digging it"
 		local dig = minetest.dig_node(test_position)

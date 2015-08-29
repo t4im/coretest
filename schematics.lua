@@ -1,8 +1,11 @@
 local test_position = {x=5,y=10,z=5}
 
-minetest.register_node("api_test:facedir_node", {
+local node_name = minetest.get_current_modname() .. ":facedir_node"
+minetest.register_node(node_name, {
 	description = "facedir node",
 	tiles = {"default_lava.png"},
+	groups = { dig_immediate=2, not_in_creative_inventory=1 },
+	paramtype = "light",
 	paramtype2 = "facedir",
 })
 
@@ -16,7 +19,7 @@ describe("minetest.place_schematic(pos, schematic, rotation, replacements, force
 			data = {}
 		}
 		for facedir=0, 23 do
-			table.insert(schematic.data, {name="api_test:facedir_node", prob=254, param2=facedir})
+			table.insert(schematic.data, {name=node_name, prob=254, param2=facedir})
 		end
 
 		When "placing it without rotation"
