@@ -4,12 +4,12 @@ local node_name = minetest.get_current_modname() .. ":facedir_node"
 minetest.register_node(node_name, {
 	description = "facedir node",
 	tiles = {
-		"mtt_testnode_bg.png^mtt_y.png",
-		"mtt_testnode_bg.png^mtt_-y.png",
-		"mtt_testnode_bg.png^mtt_x.png",
-		"mtt_testnode_bg.png^mtt_-x.png",
-		"mtt_testnode_bg.png^mtt_z.png",
-		"mtt_testnode_bg.png^mtt_-z.png"},
+		"cubictest_testnode_bg.png^cubictest_y.png",
+		"cubictest_testnode_bg.png^cubictest_-y.png",
+		"cubictest_testnode_bg.png^cubictest_x.png",
+		"cubictest_testnode_bg.png^cubictest_-x.png",
+		"cubictest_testnode_bg.png^cubictest_z.png",
+		"cubictest_testnode_bg.png^cubictest_-z.png"},
 	groups = { dig_immediate=2, not_in_creative_inventory=1 },
 	paramtype = "light",
 	paramtype2 = "facedir",
