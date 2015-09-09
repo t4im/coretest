@@ -1,19 +1,5 @@
+local dummy = cubictest.dummies.nodes
 local test_position = {x=5,y=10,z=5}
-
-local node_name = minetest.get_current_modname() .. ":facedir_node"
-minetest.register_node(node_name, {
-	description = "facedir node",
-	tiles = {
-		"cubictest_testnode_bg.png^cubictest_y.png",
-		"cubictest_testnode_bg.png^cubictest_-y.png",
-		"cubictest_testnode_bg.png^cubictest_x.png",
-		"cubictest_testnode_bg.png^cubictest_-x.png",
-		"cubictest_testnode_bg.png^cubictest_z.png",
-		"cubictest_testnode_bg.png^cubictest_-z.png"},
-	groups = { dig_immediate=2, not_in_creative_inventory=1 },
-	paramtype = "light",
-	paramtype2 = "facedir",
-})
 
 -- minetest.place_schematic(pos, schematic, rotation, replacements, force_placement)
 describe("minetest.place_schematic(pos, schematic, rotation, replacements, force_placement)", function()
@@ -25,7 +11,7 @@ describe("minetest.place_schematic(pos, schematic, rotation, replacements, force
 			data = {}
 		}
 		for facedir=0, 23 do
-			table.insert(schematic.data, {name=node_name, prob=254, param2=facedir})
+			table.insert(schematic.data, {name=dummy.facedirected.name, prob=254, param2=facedir})
 		end
 
 		When "placing it without rotation"
